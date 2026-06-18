@@ -1,9 +1,20 @@
-# A customized version of Time_Stamper for ImageJ plugin
+# A customized version of the Time_Stamper (v2.1.1) plugin for ImageJ/Fiji
+This plugin allows you to add timestamps to your image stacks.　　
 
-- User can specify the position where the time stamp is located by just clicking it on the image.
-- Font settings and color can be specified on this UI.
-- A custom format (optional) determines the time format, e.g., 36min20sec by "${mm}min${ss}sec", 1d14hr36min20sec by "${d}d${hh}h${mm}min${ss}sec", or 1:14:36:20 by "${d}:${hh}:${mm}:${ss}". Specification of `Time Unit` is necessary to format the data precisely.
-- Licence: GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper).
-- To install this plugin, please locate `.jar` file or replace it with the orignal version in `plugins` folder. Alternatively, please compile the code by yourself. 
+## New Features
+- **Interactive Positioning**: Users can specify where the timestamp is placed by simply clicking on the image.  
+- **UI customization**: Font settings (family, style, size) and colors can be customized directly from the dialog.  
+- **Custom Time Formatting**: You can define a custom time format using placeholders:
+  - Example: `36min20sec` using `${mm}min${ss}sec`
+  - Example: `1d14hr36min20sec` using `${d}d${hh}hr${mm}min${ss}sec`
+  - Example: `1:14:36:20` using `${d}:${hh}:${mm}:${ss}`
+  * *Note: Selecting the correct `Time Unit` (Seconds, Minutes, Hours) is required to parse the data precisely.*     
+- **Non-destructive Processing**: (Recommended) Checking the `Create New Window` box will generate timestamps on a duplicate window, leaving the original stack unmodified.
+
+## License  
+GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper) version.  
+
+## Installation  
+Place the `Time_Stamper-2.1.1.jar` file in the `plugins` folder of Fiji or ImageJ (replacing the original version if it exists). Alternatively, you can compile the source code yourself.
 
 <img src="https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI2.jpg?raw=true" width="600px">
