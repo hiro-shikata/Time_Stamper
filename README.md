@@ -6,4 +6,4 @@
 - Licence: GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper).
 - To install this plugin, please locate `.jar` file or replace it with the orignal version in `plugins` folder. Alternatively, please compile the code by yourself. 
 
-<img src="=https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI.jpg?raw=true" width="600px">
+<img src="https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI2.jpg?raw=true" width="600px">
