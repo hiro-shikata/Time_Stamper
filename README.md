@@ -8,7 +8,8 @@ This plugin allows you to add timestamps to your image stacks.　　
   - Example: `36min20sec` using `${mm}min${ss}sec`
   - Example: `1d14hr36min20sec` using `${d}d${hh}hr${mm}min${ss}sec`
   - Example: `1:14:36:20` using `${d}:${hh}:${mm}:${ss}`
-  * *Note: Selecting the correct `Time Unit` (Seconds, Minutes, Hours) is required to parse the data precisely.*     
+  * *Note: Selecting the correct `Time Unit` (Seconds, Minutes, Hours) is required to parse the data precisely.*
+  * *Priority of time formats: `Custom Format` > `'00:00' format` > `Suffix`  If a custom format pattern is specified, it takes the highest priority, overriding the `'00:00' format` checkbox and any defined `Suffix`.*   
 - **Non-destructive Processing**: (Recommended) Checking the `Create New Window` box will generate timestamps on a duplicate window, leaving the original stack unmodified.
 
 ## License  
