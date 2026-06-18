@@ -17,4 +17,4 @@ GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper) vers
 ## Installation  
 Place the `Time_Stamper-2.1.1.jar` file in the `plugins` folder of Fiji or ImageJ (replacing the original version if it exists). Alternatively, you can compile the source code yourself.
 
-<img src="https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI2.jpg?raw=true" width="600px">
+<img src="https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI4.jpg?raw=true" width="600px">
