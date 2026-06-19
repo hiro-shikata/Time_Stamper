@@ -39,6 +39,7 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
     static String justificationStr = "Left";
     static String customFormat = "";
     static String timeUnitStr = "Seconds";
+    static boolean createNewWindow = false;
 
     // For preview and listener synchronization
     private TextRoi previewRoi;
@@ -304,6 +305,7 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
         gd.addChoice("Time Unit:", timeUnits, timeUnitStr);
         gd.addCheckbox("Anti-Aliased text?", AAtext);
         gd.addCheckbox("Overlay", addToOverlay);
+        gd.addCheckbox("Create New Window", createNewWindow);
         
         gd.addDialogListener(this);
         Roi.addRoiListener(this);
@@ -331,16 +333,19 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
         x = (int)gd.getNextNumber();
         y = (int)gd.getNextNumber();
         size = (int)gd.getNextNumber();
+
         fontName = gd.getNextChoice();
         fontStyleStr = gd.getNextChoice();
         colorStr = gd.getNextChoice();
         justificationStr = gd.getNextChoice();
+
         digital = gd.getNextBoolean();
         suffix = gd.getNextString();
         customFormat = gd.getNextString();
         timeUnitStr = gd.getNextChoice();
         AAtext = gd.getNextBoolean();
         addToOverlay = gd.getNextBoolean();
+        createNewWindow = gd.getNextBoolean();
 
         // Get the latest dragged position
         Roi finalRoi = imp.getRoi();
@@ -357,6 +362,37 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
             } else {
                 x = rx;
             }
+        }
+
+        if (createNewWindow) {
+            ImagePlus impCopy = imp.duplicate();
+            impCopy.setTitle(imp.getTitle() + " - Timestamps");
+            impCopy.show();
+            
+            // Temporarily redirect processor reference to the duplicate image
+            ImagePlus originalImp = this.imp;
+            this.imp = impCopy;
+            
+            int nSlices = impCopy.getStackSize();
+            int originalIdx = idx;
+            idx = 1;
+            for (int i = 1; i <= nSlices; i++) {
+                impCopy.setPosition(i);
+                ImageProcessor ipCopy = impCopy.getProcessor();
+                run(ipCopy);
+            }
+            idx = originalIdx;
+            
+            // Restore reference to the original image
+            this.imp = originalImp;
+            
+            impCopy.updateAndDraw();
+            
+            // Clear preview on the original image
+            imp.killRoi();
+            imp.updateAndDraw();
+            
+            return DONE; // Stop PlugInFilterRunner from processing the original image
         }
 
         font = getSelectedFont(size);
@@ -388,6 +424,7 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
         String pTimeUnit = gd.getNextChoice();
         boolean pAAtext = gd.getNextBoolean();
         boolean pAddToOverlay = gd.getNextBoolean();
+        boolean pCreateNewWindow = gd.getNextBoolean();
 
         if (gd.invalidNumber()) {
             return false;
@@ -409,6 +446,7 @@ public class Time_Stamper implements ExtendedPlugInFilter, DialogListener, RoiLi
         timeUnitStr = pTimeUnit;
         AAtext = pAAtext;
         addToOverlay = pAddToOverlay;
+        createNewWindow = pCreateNewWindow;
 
         // Update preview
         if (previewRoi != null) {
