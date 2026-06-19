@@ -21,4 +21,8 @@ GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper) vers
 ## Installation  
 Place the `Time_Stamper-2.1.1.jar` file in the `plugins` folder of Fiji or ImageJ (replacing the original version if it exists). Alternatively, you can compile the source code yourself.
 
+## Release Note
+2026.06.18  beta released.  
+2026.06.19 v2.1.1 released: added the function "Create New Window" when timestamps are generated, which keeps the original images.  
+
 <img src="https://github.com/hiro-shikata/Time_Stamper/blob/master/media/UI4.jpg?raw=true" width="600px">
