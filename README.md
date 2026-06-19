@@ -12,6 +12,9 @@ This plugin allows you to add timestamps to your image stacks.　　
   * *Priority of time formats: `Custom Format` > `'00:00' format` > `Suffix`  If a custom format pattern is specified, it takes the highest priority, overriding the `'00:00' format` checkbox and any defined `Suffix`.*   
 - **Non-destructive Processing**: (Recommended) Checking the `Create New Window` box will generate timestamps on a duplicate window, leaving the original stack unmodified.
 
+## Requirements
+ImageJ 1.54g or later (Fiji is recommended).  
+
 ## License  
 GPLv3+ according to the [original](https://imagej.net/plugins/time-stamper) version.  
 
